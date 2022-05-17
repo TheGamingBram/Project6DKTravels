@@ -1,0 +1,9 @@
+@charset "UTF-8";
+:root{
+    --ct-hero-bg:linear-gradient(to bottom, #007d0c, #fcba03);
+}
+
+.hero-section{position:relative;padding:80px 0 120px 0;}
+.hero-section:after{content:" ";background-image:var(--ct-hero-bg);position:absolute;top:-400px;right:0;bottom:0;z-index:-1;width:100%;border-radius:0;-webkit-transform:skewY(-3deg);transform:skewY(-3deg)}
+
+.ImageCarosel{border-radius: 10%; height: 350px; width: 100px;}
