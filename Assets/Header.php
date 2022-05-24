@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Monkey Travels</title>
+    <title>Donkey Travels</title>
 
     <link rel="icon" type="image/png" href="./Assets/Img/logo.png">
 
