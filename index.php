@@ -1,10 +1,14 @@
 <?php 
         include("./Assets/config.php"); //connection to database and some test functions
         include("./Assets/header.php"); //insert to bootstrap and other java scripts
+
+        prettyprint($_POST);
+
 ?>
 
 <head>
     <link rel="stylesheet" href="./Assets/Css/app.min.css"> 
+    <link rel="stylesheet" href="./Assets/Css/Login.css">
 </head>
 <body class="">
 
@@ -25,19 +29,7 @@
                             <a class="nav-link active" href="">Home</a>
                         </li>
                         <li class="nav-item mx-lg-1">
-                            <a class="nav-link" href="">Features</a>
-                        </li>
-                        <li class="nav-item mx-lg-1">
-                            <a class="nav-link" href="">Pricing</a>
-                        </li>
-                        <li class="nav-item mx-lg-1">
-                            <a class="nav-link" href="">FAQs</a>
-                        </li>
-                        <li class="nav-item mx-lg-1">
-                            <a class="nav-link" href="">Clients</a>
-                        </li>
-                        <li class="nav-item mx-lg-1">
-                            <a class="nav-link" href="">Contact</a>
+                            <a class="nav-link" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal">Login / Registreren</a>
                         </li>
                     </ul>
                 </div>
@@ -97,7 +89,7 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <h1 class="mt-0"><i class="mdi mdi-infinity"></i></h1>
-                            <h3>The admin is fully <span class="text-primary">responsive</span> and easy to <span class="text-primary">customize</span></h3>
+                            <h3>Welkom bij <span class="text-primary">Donkey Travels</span>!</h3>
                             <p class="text-muted mt-2">The clean and well commented code allows easy customization of the
                                 theme.It's designed for
                                 <br>describing your app, agency or business.</p>
@@ -204,72 +196,53 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-                        <img src="assets/images/logo.png" alt="" class="logo-dark" height="18">
-                        <p class="text-muted mt-4">Hyper makes it easier to build better websites with
-                            <br> great speed. Save hundreds of hours of design
-                            <br> and development by using it.</p>
-
-                        <ul class="social-list list-inline mt-3">
-                            <li class="list-inline-item text-center">
-                                <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
-                            </li>
-                            <li class="list-inline-item text-center">
-                                <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
-                            </li>
-                            <li class="list-inline-item text-center">
-                                <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
-                            </li>
-                            <li class="list-inline-item text-center">
-                                <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github"></i></a>
-                            </li>
-                        </ul>
-
-                    </div>
-
-                    <div class="col-lg-2 col-md-4 mt-3 mt-lg-0">
-                        <h5 class="text-light">Company</h5>
-
-                        <ul class="list-unstyled ps-0 mb-0 mt-3">
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">About Us</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Documentation</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Blog</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Affiliate Program</a></li>
-                        </ul>
-
-                    </div>
-
-                    <div class="col-lg-2 col-md-4 mt-3 mt-lg-0">
-                        <h5 class="text-light">Apps</h5>
-
-                        <ul class="list-unstyled ps-0 mb-0 mt-3">
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Ecommerce Pages</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Email</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Social Feed</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Projects</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Tasks Management</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-2 col-md-4 mt-3 mt-lg-0">
-                        <h5 class="text-light">Discover</h5>
-
-                        <ul class="list-unstyled ps-0 mb-0 mt-3">
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Help Center</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Our Products</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Privacy</a></li>
-                        </ul>
+                        <img src="./Assets/Img/Logo.png" alt="" class="logo-dark" height="50">
+                        <p class="text-muted  text-center">© 2022 - <script>document.write(new Date().getFullYear())</script> Donky Travels.</p>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="mt-5">
-                            <p class="text-muted mt-4 text-center mb-0">© 2018 - <script>document.write(new Date().getFullYear())</script>2022 Hyper. Design and coded by
-                                Coderthemes</p>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </footer>
         <!-- END FOOTER -->
+
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Launch demo modal
+          </button> -->
+          
+          <!-- Login / Registreer Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="login-container" id="LoginContainer">
+                    <div id="Login-Cont">
+                        <form action="" method="post" class="form-login">
+                            <ul class="login-nav">
+                                <li class="login-nav__item active" id="LOGIN_LI">
+                                    <a href="#">Login</a>
+                                </li>
+                                <li class="login-nav__item" id="REGIST_LI">
+                                    <a href="#">Registreren</a>
+                                </li>
+                            </ul>
+                            <label for="login-input-user" class="login__label">Username</label>
+                            <input id="login-input-user" name="Username" class="login__input" type="text" />
+
+                            <label for="login-input-password" class="login__label">Password</label>
+                            <input id="login-input-password" name="Password" class="login__input" type="password" />
+                            <input type="hidden" name="submitval" value="inloggen" />
+                            <button type="submit" class="login__submit">Sign in</button>
+                        </form>
+                        <a href="#" class="login__forgot">Forgot Password?</a>
+                    </div>
+                    <div id="Regist-Cont">
+
+                    </div>
+                    
+                </div>
+              </div>
+            </div>
+          </div>
+
+        
 </body>
