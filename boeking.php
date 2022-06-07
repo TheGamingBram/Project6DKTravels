@@ -21,8 +21,16 @@
                             <td><input type="text" placeholder="PINCode" name="PINCode" required></td>
                         </tr>
                         <tr>
-                            <td>FKtochtenID:</td>
-                            <td><input type="text" placeholder="FKtochtenID" name="FKtochtenID" required></td>
+                            <td>omschrijving:</td>
+                            <td><input type="text" placeholder="omschrijving" name="Omschrijving" required></td>
+                        </tr>
+                        <tr>
+                            <td>route:</td>
+                            <td><input type="text" placeholder="route" name="Route" required></td>
+                        </tr>
+                        <tr>
+                            <td>aantaldagen:</td>
+                            <td><input type="text" placeholder="aantaldagen" name="Aantaldagen" required></td>
                         </tr>
                         <tr>
                             <td>FKklantenID:</td>
@@ -41,14 +49,29 @@
         </div>
         <?php
             if(isset($_POST['toevoegen'])){
-                
+
+                $sql = "INSERT INTO `tochten`(`Omschrijving`, `Route`, `Aantaldagen`) VALUES (?,?,?)";
+                if($stmt = mysqli_prepare($link, $sql)){
+                    mysqli_stmt_bind_param($stmt, "sss", $param_Omschrijving, $param_Route, $param_Aantaldagen);
+
+                    $param_Omschrijving = $_POST['Omschrijving'];
+                    $param_Route = $_POST['Route'];
+                    $param_Aantaldagen = $_POST['Aantaldagen'];
+
+                    mysqli_stmt_execute($stmt);
+                }
+                $result_tochten = mysqli_query($link, "SELECT ID FROM `tochten` WHERE Omschrijving = '".$param_Omschrijving."';");
+
+                while ($row = mysqli_fetch_assoc($result_tochten)){
+                    $param_FKtochtenID = $row["ID"];
+                }
+
                 $sql = "INSERT INTO `boekingen`(`Startdatum`, `PINCode`, `FKtochtenID`, `FKklantenID`, `FKstatussenID`) VALUES (?,?,?,?,?)";
                 if($stmt = mysqli_prepare($link, $sql)){
                     mysqli_stmt_bind_param($stmt, "sssss", $param_startdatum, $param_PINCode, $param_FKtochtenID, $param_FKklantenID, $param_FKstatussenID);
 
                     $param_startdatum = $_POST['startdatum'];
                     $param_PINCode = $_POST['PINCode'];
-                    $param_FKtochtenID = $_POST['FKtochtenID'];
                     $param_FKklantenID = $_POST['FKklantenID'];
                     $param_FKstatussenID = $_POST['FKstatussenID'];
 
