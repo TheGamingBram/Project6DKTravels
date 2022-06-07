@@ -2,7 +2,7 @@
         include("./Assets/config.php"); //connection to database and some test functions
         include("./Assets/header.php"); //insert to bootstrap and other java scripts
 
-        $randomgen = rand(0, 100);
+        $randomgen = rand(0, 100); //test git
 
         $username = $password = $telephone = $email = "";
         $username_err = $password_err = $tel_err = $email_err = "";
@@ -22,7 +22,7 @@
                     $email_err = "Please enter a email.";
                 } else{
                     // Prepare a select statement
-                    $sql = "SELECT id FROM users WHERE email = ?";
+                    $sql = "SELECT id FROM klanten WHERE Email = ?";
                     
                     if($stmt = mysqli_prepare($link, $sql)){
                         // Bind variables to the prepared statement as parameters
@@ -39,7 +39,7 @@
                             if(mysqli_stmt_num_rows($stmt) == 1){
                                 $email_err = "This email is already taken.";
                             } else{
-                                $email = trim($_POST["Email"]);
+                                $email = $_POST["Email"];
                             }
                         } else{
                             $email_err = "Oops! Something went wrong. Please try again later.";
@@ -80,6 +80,8 @@
                         if(mysqli_stmt_execute($stmt)){
                             // Redirect to login page
                             header("location: index.php");
+                            //prettyprint($param_username . " " . $param_email . " " . "GUFAWH");
+
                         } else{
                             PHP_Allert("Oops! Something went wrong. Please try again later.");
                         }
@@ -379,7 +381,7 @@
               <div class="modal-content">
                 <div class="login-container" id="LoginContainer">
                     <div id="Login-Cont" style="display: block;">
-                        <form action="" method="post" class="form-login">
+                        <form action="" autocomplete="off" method="post" class="form-login">
                             <ul class="login-nav">
                                 <li class="login-nav__item active" id="LOGIN_LI">
                                     <a href="#" onclick="ToggleLogin()">Login</a>
@@ -398,7 +400,7 @@
                         </form>
                     </div>
                     <div id="Regist-Cont" style="display: none;">
-                        <form action="" method="post" class="form-login">
+                        <form action="" autocomplete="off" method="post" class="form-login">
                             <ul class="login-nav">
                                 <li class="login-nav__item" id="LOGIN_LI">
                                     <a href="#" onclick="ToggleLogin()">Login</a>
