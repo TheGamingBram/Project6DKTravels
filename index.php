@@ -22,7 +22,7 @@
                     $email_err = "Please enter a email.";
                 } else{
                     // Prepare a select statement
-                    $sql = "SELECT id FROM users WHERE email = ?";
+                    $sql = "SELECT id FROM klanten WHERE Email = ?";
                     
                     if($stmt = mysqli_prepare($link, $sql)){
                         // Bind variables to the prepared statement as parameters
@@ -39,7 +39,7 @@
                             if(mysqli_stmt_num_rows($stmt) == 1){
                                 $email_err = "This email is already taken.";
                             } else{
-                                $email = trim($_POST["Email"]);
+                                $email = $_POST["Email"];
                             }
                         } else{
                             $email_err = "Oops! Something went wrong. Please try again later.";
@@ -80,6 +80,8 @@
                         if(mysqli_stmt_execute($stmt)){
                             // Redirect to login page
                             header("location: index.php");
+                            //prettyprint($param_username . " " . $param_email . " " . "GUFAWH");
+
                         } else{
                             PHP_Allert("Oops! Something went wrong. Please try again later.");
                         }
