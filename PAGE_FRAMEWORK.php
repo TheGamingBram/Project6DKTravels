@@ -2,9 +2,23 @@
         include("./Assets/config.php"); //connection to database and some test functions
         include("./Assets/header.php"); //insert to bootstrap and other java scripts
 
+        session_start();
+
         if(!isset($PageName)){
             $PageName = "Template Page";
         }
+
+        if(isset($_GET['distroy'])){
+            unset($_SESSION);
+        }
+        
+        if(!isset($_SESSION["loggedin"])){
+            header("location: index.php");
+            exit;
+        }else {
+            $USERNAME = $_SESSION['name'];
+        }
+       
         if(!isset($USERNAME)){
             $USERNAME = "Template";
         }
@@ -50,7 +64,7 @@
                                     </a>
 
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <a href="?distroy=true" class="dropdown-item notify-item">
                                         <i class="mdi mdi-logout me-1"></i>
                                         <span>Logout</span>
                                     </a>

@@ -1,6 +1,13 @@
 <?php 
         include("./Assets/config.php"); //connection to database and some test functions
         include("./Assets/header.php"); //insert to bootstrap and other java scripts
+        
+        session_start();
+
+        if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+            header("location: portal.php");
+            exit;
+        }
 
         $randomgen = rand(0, 100); //test git
 
@@ -78,7 +85,6 @@
 
                         // Attempt to execute the prepared statement
                         if(mysqli_stmt_execute($stmt)){
-                            // Redirect to login page
                             header("location: index.php");
                             //prettyprint($param_username . " " . $param_email . " " . "GUFAWH");
 
@@ -107,7 +113,53 @@
 
             }
             elseif ($_POST['submitval'] == "inloggen") {
-                
+
+                if(empty(trim($_POST["Email"]))){
+                    $email_err = "Please enter username.";
+                } else{
+                    $email = trim($_POST["Email"]);
+                }
+
+                if(empty(trim($_POST["Password"]))){
+                    $password_err = "Please enter your password.";
+                } else{
+                    $password = trim($_POST["Password"]);
+                }
+
+                if(empty($email_err) && empty($password_err)){
+                    $sql = "SELECT ID, Naam, Wachtwoord FROM klanten WHERE Email = ?";
+                    if($stmt = mysqli_prepare($link, $sql)){
+                        mysqli_stmt_bind_param($stmt, "s", $param_email);
+                        $param_email = $email;
+                        if(mysqli_stmt_execute($stmt)){
+                            mysqli_stmt_store_result($stmt);
+                            if(mysqli_stmt_num_rows($stmt) == 1){
+                                mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
+                                if(mysqli_stmt_fetch($stmt)){
+                                    if(password_verify($password, $hashed_password)){
+                                        session_start();
+
+                                        $_SESSION["loggedin"] = "loggedin";
+                                        $_SESSION["id"] = $id;
+                                        $_SESSION["name"] = $username;
+
+                                        header("location: portal.php");
+                                    }
+                                    else{
+                                        PHP_Allert("Invalid username or password.");
+                                    }
+                                }
+                            }else{
+                                PHP_Allert("Invalid username or password.");
+                            }
+                        }else{
+                            if(!empty($email_err)){
+                                PHP_Allert($email_err);
+                            }
+                        }
+                    }
+                }
+
             }else{
                 PHP_Allert("how did you get here?");
             }
@@ -390,8 +442,8 @@
                                     <a href="#" onclick="ToggleRegist()">Registreren</a>
                                 </li>
                             </ul>
-                            <label for="login-input-user" class="login__label">Gebruikers Naam</label>
-                            <input id="login-input-user" required name="Username" class="login__input" type="text" />
+                            <label for="login-input-user" class="login__label">Email</label>
+                            <input id="login-input-user" required name="Email" class="login__input" type="email" />
 
                             <label for="login-input-password" class="login__label">Password</label>
                             <input id="login-input-password" required name="Password" class="login__input" type="password" />
