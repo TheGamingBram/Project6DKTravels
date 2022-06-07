@@ -379,7 +379,7 @@
               <div class="modal-content">
                 <div class="login-container" id="LoginContainer">
                     <div id="Login-Cont" style="display: block;">
-                        <form action="" method="post" class="form-login">
+                        <form action="" autocomplete="off" method="post" class="form-login">
                             <ul class="login-nav">
                                 <li class="login-nav__item active" id="LOGIN_LI">
                                     <a href="#" onclick="ToggleLogin()">Login</a>
@@ -398,7 +398,7 @@
                         </form>
                     </div>
                     <div id="Regist-Cont" style="display: none;">
-                        <form action="" method="post" class="form-login">
+                        <form action="" autocomplete="off" method="post" class="form-login">
                             <ul class="login-nav">
                                 <li class="login-nav__item" id="LOGIN_LI">
                                     <a href="#" onclick="ToggleLogin()">Login</a>
