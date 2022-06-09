@@ -142,6 +142,7 @@
                                         $_SESSION["loggedin"] = "loggedin";
                                         $_SESSION["id"] = $id;
                                         $_SESSION["name"] = $username;
+                                        $_SESSION["email"] = $email;
 
                                         header("location: portal.php");
                                     }

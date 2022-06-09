@@ -143,6 +143,16 @@
                                             <a href="apps-file-manager.html" class="dropdown-item">File Manager</a>
                                         </div>
                                     </li>
+
+                                    <?php if($_SESSION['Email'] = "Admin@donkeytravel.nl"){
+                                        ?> 
+                                            <li class="nav-item dropdown active">
+                                                <a class="nav-link dropdown-toggle arrow-none" href="adminpanel.php" id="topnav-apps" role="button">
+                                                    Admin Pannel
+                                                </a>
+                                            </li>
+                                        <?php
+                                    } ?>
                                 </ul>
                             </div>
                         </nav>
