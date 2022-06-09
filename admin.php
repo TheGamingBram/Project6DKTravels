@@ -29,8 +29,10 @@ $query_run = mysqli_query($con, $query);
             <th>ID</th>
             <th>Naam</th>
             <th>E-mail</th>
-            <th>Gewijzigd</th>
-            <th>Bewerken</th>
+            <th>Telefoon</th>
+            <th>Wachtwoord</th>
+            <th>Registratiedatum</th>
+            <th>Aanpassen</th>
             <th>Verwijderen</th>
         </tr>
     </thead>
@@ -55,7 +57,7 @@ $query_run = mysqli_query($con, $query);
                 </form>
             </td>
             <td>
-                <form action="code.php" method="post">
+                <form action="admincode.php" method="post">
                 <input type="hidden" name="delete_ID" value="<?php echo $row['ID']?>">
                 <button type="sumbit" name="delete_btn" class="btn btn-danger"> Verwijderen</button>
                 </form>

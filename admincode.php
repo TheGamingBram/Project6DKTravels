@@ -23,14 +23,14 @@ if(isset($_POST['updatebtn']))
     if($query_run)
     {
         $_SESSION['success'] = "Your Data is Updated";
-        header('Location: index.php'); 
+        header('Location: admin.php'); 
     }
     else
     {
         $_SESSION['status'] = "Your Data is NOT Updated";
-        header('Location: index.php'); 
+        header('Location: admin.php'); 
     }
-}
+} 
 
 
 
@@ -44,12 +44,12 @@ if(isset($_POST['delete_btn']))
     if($query_run)
     {
         $_SESSION['success'] = "Your Data is Deleted";
-        header('Location: index.php'); 
+        header('Location: admin.php'); 
     }
     else
     {
         $_SESSION['status'] = "Your Data is NOT DELETED";       
-        header('Location: index.php'); 
+        header('Location: admin.php'); 
     }    
 }
 ?>
