@@ -93,7 +93,7 @@
                                         </div>
                                     </li>
 
-                                    <?php if($_SESSION['Email'] = "Admin@donkeytravel.nl"){
+                                    <?php if($_SESSION['email'] = "Admin@donkeytravel.nl"){
                                         ?> 
                                             <li class="nav-item dropdown active">
                                                 <a class="nav-link dropdown-toggle arrow-none" href="adminpanel.php" id="topnav-apps" role="button">
