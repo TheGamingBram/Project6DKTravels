@@ -3,7 +3,7 @@
     include("./Assets/config.php");
     session_start();
 
-    if($_SESSION['Email'] != "Admin@donkeytravel.nl"){
+    if($_SESSION['email'] != "Admin@donkeytravel.nl"){
         header("location: portal.php");
         exit;
     }
