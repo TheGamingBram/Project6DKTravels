@@ -8,6 +8,8 @@
         exit;
     }
 
+    prettyprint($_SESSION);
+
     if(isset($_GET['deluser'])){
         $delid = $_GET['deluser'];
         $query = "DELETE FROM klanten WHERE ID='$delid' ";
