@@ -85,7 +85,11 @@
 
                         // Attempt to execute the prepared statement
                         if(mysqli_stmt_execute($stmt)){
-                            header("location: index.php");
+                            $_SESSION["loggedin"] = "loggedin";
+                            $_SESSION["name"] = $username;
+                            $_SESSION["email"] = $email;
+
+                            header("location: portal.php");
                             //prettyprint($param_username . " " . $param_email . " " . "GUFAWH");
 
                         } else{
