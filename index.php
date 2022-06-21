@@ -4,11 +4,6 @@
         
         session_start();
 
-        if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-            header("location: portal.php");
-            exit;
-        }
-
         $randomgen = rand(0, 100); //test git
 
         $username = $password = $telephone = $email = "";
@@ -196,9 +191,22 @@
                         <li class="nav-item mx-lg-1">
                             <a class="nav-link active" href="">Home</a>
                         </li>
-                        <li class="nav-item mx-lg-1">
-                            <a class="nav-link" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal">Login / Registreren</a>
-                        </li>
+                        <?php 
+                            if(!isset($_SESSION['loggedin'])){
+                                ?>
+                                    <li class="nav-item mx-lg-1">
+                                        <a class="nav-link" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal">Login / Registreren</a>
+                                    </li>
+                                <?php
+                            }else{
+                                ?>
+                                    <li class="nav-item mx-lg-1">
+                                        <a class="nav-link" href="portal.php">Portal</a>
+                                    </li>
+                                <?php
+                            }
+                        ?>
+                        
                     </ul>
                 </div>
             </div>
