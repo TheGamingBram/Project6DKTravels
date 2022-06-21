@@ -8,7 +8,7 @@
         exit;
     }
 
-    prettyprint($_SESSION);
+    // prettyprint($_SESSION);
 
     if(isset($_GET['deluser'])){
         $delid = $_GET['deluser'];
