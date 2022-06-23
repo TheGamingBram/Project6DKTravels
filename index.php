@@ -219,45 +219,11 @@
                 <div class="row align-items-center">
                     <div class="col-md-5">
                         <div class="mt-md-4">
-                                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-                                        <div class="carousel-inner">
-                                          <div class="carousel-item active" data-bs-interval="10000">
-                                            <img src="Assets/Img/rotate1.png" class="d-block w-100 ImageCarosel " alt="">
-                                          </div>
-                                          <div class="carousel-item" data-bs-interval="2000">
-                                            <img src="Assets/Img/rotate2.png" class="d-block w-100 ImageCarosel" alt="">
-                                          </div>
-                                          <div class="carousel-item">
-                                            <img src="Assets/Img/rotate3.png" class="d-block w-100 ImageCarosel" alt="">
-                                          </div>
-                                          <div class="carousel-item">
-                                            <img src="Assets/Img/rotate4.png" class="d-block w-100 ImageCarosel" alt="">
-                                          </div>
-                                          <div class="carousel-item">
-                                            <img src="Assets/Img/rotate5.png" class="d-block w-100 ImageCarosel" alt="">
-                                          </div>
-                                            <?php 
-                                                if($randomgen == "69"){
-                                                    echo '
-                                                    <div class="carousel-item">
-                                                        <img src="https://c.tenor.com/x8v1oNUOmg4AAAAd/rickroll-roll.gif" class="d-block w-100 ImageCarosel" alt="">
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <img src="https://c.tenor.com/_i3mzMaGZh8AAAAC/quandale-quandale-dingle.gif" class="d-block w-100 ImageCarosel" alt="">
-                                                    </div>
-                                                    ';
-                                                }
-                                            ?>
-                                        </div>
-                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                          <span class="visually-hidden">Previous</span>
-                                        </button>
-                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                          <span class="visually-hidden">Next</span>
-                                        </button>
-                                      </div>
+                            <div class="text-center">
+                                <h1 class="mt-0"><i class="mdi mdi-infinity"></i></h1>
+                                <h3>Welkom bij <span class="text-primary">Donkey Travels</span>!</h3>
+                                <p class="text-muted mt-2"></p>
+                            </div> 
                         </div>
                     </div>
                     <div class="col-md-5 offset-md-2">
@@ -275,100 +241,49 @@
             <div class="container">
                 <div class="row py-4">
                     <div class="col-lg-12">
-                        <div class="text-center">
-                            <h1 class="mt-0"><i class="mdi mdi-infinity"></i></h1>
-                            <h3>Welkom bij <span class="text-primary">Donkey Travels</span>!</h3>
-                            <p class="text-muted mt-2">The clean and well commented code allows easy customization of the
-                                theme.It's designed for
-                                <br>describing your app, agency or business.</p>
+                        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="10000">
+                                    <img src="Assets/Img/rotate1.png" class="d-block w-100 ImageCarosel " alt="">
+                                </div>
+                                <div class="carousel-item" data-bs-interval="2000">
+                                    <img src="Assets/Img/rotate2.png" class="d-block w-100 ImageCarosel" alt="">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Assets/Img/rotate3.png" class="d-block w-100 ImageCarosel" alt="">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Assets/Img/rotate4.png" class="d-block w-100 ImageCarosel" alt="">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Assets/Img/rotate5.png" class="d-block w-100 ImageCarosel" alt="">
+                                </div>
+                                <?php 
+                                    if($randomgen == "69"){
+                                        echo '
+                                            <div class="carousel-item">
+                                                <img src="https://c.tenor.com/x8v1oNUOmg4AAAAd/rickroll-roll.gif" class="d-block w-100 ImageCarosel" alt="">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="https://c.tenor.com/_i3mzMaGZh8AAAAC/quandale-quandale-dingle.gif" class="d-block w-100 ImageCarosel" alt="">
+                                            </div>
+                                            ';
+                                    }
+                                ?>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="text-center p-2 p-sm-3">
-                            <div class="avatar-sm m-auto">
-                                <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-desktop text-primary font-24"></i>
-                                </span>
-                            </div>
-                            <h4 class="mt-3">Responsive Layouts</h4>
-                            <p class="text-muted mt-2 mb-0">Et harum quidem rerum as expedita distinctio nam libero tempore
-                                cum soluta nobis est cumque quo.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="text-center p-2 p-sm-3">
-                            <div class="avatar-sm m-auto">
-                                <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-vector-square text-primary font-24"></i>
-                                </span>
-                            </div>
-                            <h4 class="mt-3">Based on Bootstrap UI</h4>
-                            <p class="text-muted mt-2 mb-0">Temporibus autem quibusdam et aut officiis necessitatibus saepe
-                                eveniet ut sit et recusandae.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="text-center p-2 p-sm-3">
-                            <div class="avatar-sm m-auto">
-                                <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-presentation text-primary font-24"></i>
-                                </span>
-                            </div>
-                            <h4 class="mt-3">Creative Design</h4>
-                            <p class="text-muted mt-2 mb-0">Nam libero tempore, cum soluta a est eligendi minus id quod
-                                maxime placeate facere assumenda est.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="text-center p-2 p-sm-3">
-                            <div class="avatar-sm m-auto">
-                                <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-apps text-primary font-24"></i>
-                                </span>
-                            </div>
-                            <h4 class="mt-3">Multiple Applications</h4>
-                            <p class="text-muted mt-2 mb-0">Et harum quidem rerum as expedita distinctio nam libero tempore
-                                cum soluta nobis est cumque quo.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="text-center p-2 p-sm-3">
-                            <div class="avatar-sm m-auto">
-                                <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-shopping-cart-alt text-primary font-24"></i>
-                                </span>
-                            </div>
-                            <h4 class="mt-3">Ecommerce Pages</h4>
-                            <p class="text-muted mt-2 mb-0">Temporibus autem quibusdam et aut officiis necessitatibus saepe
-                                eveniet ut sit et recusandae.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="text-center p-2 p-sm-3">
-                            <div class="avatar-sm m-auto">
-                                <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-grids text-primary font-24"></i>
-                                </span>
-                            </div>
-                            <h4 class="mt-3">Multiple Layouts</h4>
-                            <p class="text-muted mt-2 mb-0">Nam libero tempore, cum soluta a est eligendi minus id quod
-                                maxime placeate facere assumenda est. <p style="color: white;">Try to get the randomizer to 69, Rn it is: <?= $randomgen ?></p>
-                            </p>
-                        </div>
-                    </div>
+                
 
                     <?php 
                     if($_SERVER["REQUEST_METHOD"] == "POST"){

@@ -121,10 +121,10 @@
 
 <script>
     $('#user_table').DataTable({
-        paging: false,
+        paging: true,
         "info": false,
         "lengthChange":false,
-        "pageLength": -1,
+        "pageLength": 5,
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.11.5/i18n/nl-NL.json" // adds dutch language support
         },

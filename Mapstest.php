@@ -1,5 +1,5 @@
 <?php
-    $PageName = "Maps";
+    $PageName = "Route";
     include("./Assets/config.php");
     session_start();
     
@@ -9,7 +9,7 @@
 
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title">Maps</h5>
+        <h5 class="card-title">Route nr: </h5>
         <p class="card-text">
             <div id="map"></div>
         </div>
