@@ -29,4 +29,6 @@
     var target = L.latLng('51.7218987', '5.8797225');
     map.setView(target, 14);
     L.marker(target).addTo(map);
+    var target1 = L.latLng('51.7314521', '5.852152');
+    L.marker(target1).addTo(map);
 </script>
