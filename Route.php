@@ -21,6 +21,29 @@
         $route = explode(",", $row["Route"]);
 
         prettyprint($route);
+
+        $MaxValue = count($route) -1;
+        $startCode = 0;
+
+        foreach ($route as $key => $value) {
+            if($startCode == 0 || $startCode == $MaxValue){
+                $SQL_Request_location = "Select
+                    donkeytravel.herbergen.Coordinaten
+                From
+                    donkeytravel.herbergen
+                Where
+                    donkeytravel.herbergen.ID = ".$value."";
+
+            }else{
+                $SQL_Request_location = "";
+            }
+
+            $query_run_Location = mysqli_query($con, $SQL_Request_location);
+            while ($row_location = mysqli_fetch_assoc($query_run_Location)) {
+                prettyprint($row_location);
+            }
+            $startCode++;
+        }
     }
 
     include("PAGE_FRAMEWORK.php"); //connection to database and some test functions
