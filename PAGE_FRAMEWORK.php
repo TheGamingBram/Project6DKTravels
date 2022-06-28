@@ -85,14 +85,14 @@
                                         Home
                                         </a>
                                     </li>
-                                    <li class="nav-item dropdown active">
+                                    <!-- <li class="nav-item dropdown active">
                                         <a class="nav-link dropdown-toggle arrow-none" href="portal.php" id="topnav-apps" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="uil-apps me-1"></i>Apps<div class="arrow-down"></div>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="topnav-apps">
                                             <a href="portal.php" class="dropdown-item">Home</a>
                                         </div>
-                                    </li>
+                                    </li> -->
 
                                     <?php if($_SESSION['email'] == "Admin@donkeytravel.nl"){
                                         ?> 

@@ -90,12 +90,15 @@
         $query = "SELECT * FROM boekingen";
         if($_SESSION['email'] != "Admin@donkeytravel.nl"){
                 var_dump($_SESSION['email']);
-                $quary = "SELECT * FROM klanten WHERE Email = ". $_SESSION['email'] ." LIMIT 1";
-                echo $quary . "<br />";
-                $result = mysqli_query($link, $query);
-                while($row = mysqli_fetch_array($result)){
-                        $klantID = $row['ID'];
-                        echo $row['ID'] . "<br />";
+                $quary_Klant = "SELECT * FROM klanten WHERE Email = '". $_SESSION['email'] ."' ";
+                echo $quary_Klant . "<br />";
+
+
+                $result_klant = mysqli_query($link, $quary_Klant);
+                while($row1 = mysqli_fetch_assoc($result_klant)){
+                        prettyprint($row1);
+                        $klantID = $row1['ID'];
+                        // echo $row1['ID'] . "<br />";
                 }
                 $query = "SELECT * FROM boekingen WHERE FKklantenID = '". $klantID ."'";
                 //echo $query;
