@@ -1,10 +1,18 @@
 <?php
-    include("./Assets/config.php"); //connection to database and some test functions
     include("./Assets/header.php"); //insert to bootstrap and other java scripts
+    
+    if(session_id() === null){
+        session_start();
+    }
 
-    session_start();
     if(isset($_SESSION["name"])){
-        echo $_SESSION["name"];
+        $naam = $_SESSION["name"];
+
+        $sql = "SELECT * FROM `klanten` WHERE `klanten`.`Naam` ='" . $naam . "'";
+        $result = mysqli_query($link, $sql);
+        while($row = mysqli_fetch_array($result)){
+            $klantID = $row['ID'];
+        }
     }
 ?>
 <html>
@@ -37,10 +45,19 @@
                             <td>aantaldagen:</td>
                             <td><input type="text" placeholder="aantaldagen" name="Aantaldagen" required></td>
                         </tr>
-                        <tr>
-                            <td>FKklantenID:</td>
-                            <td><input type="text" placeholder="FKklantenID" name="FKklantenID" required></td>
-                        </tr>
+                        <?php
+                        if(isset($klantID)){
+                            echo '<tr>
+                                    <td><input type="hidden" value="'. $klantID .'" name="FKklantenID" required></td>
+                                </tr>';
+                        }
+                        else{
+                            echo '<tr>
+                                    <td>FKklantenID:</td>
+                                    <td><input type="text" placeholder="FKklantenID" name="FKklantenID" required></td>
+                                </tr>';
+                        }
+                        ?>
                         <tr>
                             <td>FKstatussenID:</td>
                             <td><input type="text" placeholder="FKstatussenID" name="FKstatussenID" required></td>

@@ -2,6 +2,7 @@
     $PageName = "Portal";
     include("./Assets/config.php");
     session_start();
+    prettyprint($_SESSION);
     
 
     include("PAGE_FRAMEWORK.php"); //connection to database and some test functions

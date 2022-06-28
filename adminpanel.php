@@ -8,7 +8,6 @@
         exit;
     }
 
-    // prettyprint($_SESSION);
 
     if(isset($_GET['deluser'])){
         $delid = $_GET['deluser'];
@@ -110,7 +109,19 @@
                                 </div>
                             </div>
                         </td>
-                    </tr>   
+                    </tr>
+
+                    <!-- <form action="adminbewerken.php" method="post">
+                                <input type="hidden" name="edit_ID" value="<?php echo $row['ID'] ?>">
+                                <button type="sumbit" name="edit_btn" class="btn btn-primary"> Bewerken</button>
+                            </form>
+                            <form action="admincode.php" method="post">
+                            <input type="hidden" name="delete_ID" value="<?php echo $row['ID']?>">
+                            <button type="sumbit" name="delete_btn" class="btn btn-danger"> Verwijderen</button>
+                            </form> -->
+
+                            
+
                     <?php
                 }
             ?>
