@@ -16,35 +16,46 @@
     ";
 
     $query_run = mysqli_query($con, $SQL_Request);
-    while ($row = mysqli_fetch_assoc($query_run)) 
-    {
-        $route = explode(",", $row["Route"]);
-
-        prettyprint($route);
-
-        $MaxValue = count($route) -1;
-        $startCode = 0;
-
-        foreach ($route as $key => $value) {
-            if($startCode == 0 || $startCode == $MaxValue){
-                $SQL_Request_location = "Select
-                    donkeytravel.herbergen.Coordinaten
-                From
-                    donkeytravel.herbergen
-                Where
-                    donkeytravel.herbergen.ID = ".$value."";
-
-            }else{
-                $SQL_Request_location = "";
+    if($query_run->num_rows>0){
+        while ($row = mysqli_fetch_assoc($query_run)) 
+        {
+            $route = explode(",", $row["Route"]);
+    
+            $cordsArray = array();
+    
+            $MaxValue = count($route) -1;
+            $startCode = 0;
+    
+            foreach ($route as $key => $value) {
+                if($startCode == 0 || $startCode == $MaxValue){
+                    $SQL_Request_location = "Select
+                        donkeytravel.herbergen.Coordinaten
+                    From
+                        donkeytravel.herbergen
+                    Where
+                        donkeytravel.herbergen.ID = ".$value."";
+    
+                }else{
+                    $SQL_Request_location = "Select
+                        donkeytravel.restaurants.Coordinaten
+                    From
+                        donkeytravel.restaurants
+                    Where
+                        donkeytravel.restaurants.ID = ".$value."";
+                }
+    
+                $query_run_Location = mysqli_query($con, $SQL_Request_location);
+                while ($row_location = mysqli_fetch_assoc($query_run_Location)) {
+                    array_push($cordsArray, $row_location['Coordinaten']);
+                }
+                $startCode++;
             }
-
-            $query_run_Location = mysqli_query($con, $SQL_Request_location);
-            while ($row_location = mysqli_fetch_assoc($query_run_Location)) {
-                prettyprint($row_location);
-            }
-            $startCode++;
         }
+    }else{
+        header("location: portal.php");
+        exit;
     }
+    
 
     include("PAGE_FRAMEWORK.php"); //connection to database and some test functions
 ?>
@@ -68,10 +79,30 @@
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+    var CordsArray_Java = <?php echo json_encode($cordsArray) ?>;
 
-    var target = L.latLng('51.7218987', '5.8797225');
-    map.setView(target, 14);
-    L.marker(target).addTo(map);
-    var target1 = L.latLng('51.7314521', '5.852152');
-    L.marker(target1).addTo(map);
+    var MaxValue_Java = <?= $MaxValue ?>;
+    var startCode_java = 0;
+
+    CordsArray_Java.forEach(element => {
+
+        const SpitText = element.split(",");
+
+        if(startCode_java == 0){
+            var target = L.latLng(SpitText[0], SpitText[1]);
+            map.setView(target, 14);
+            
+        }else{
+            var target = L.latLng(SpitText[0], SpitText[1]);
+        }
+        L.marker(target).addTo(map);
+
+        startCode_java++;
+    });
+
+    // var target = L.latLng('51.7218987', '5.8797225');
+    // map.setView(target, 14);
+    // L.marker(target).addTo(map);
+    // var target1 = L.latLng('51.7314521', '5.852152');
+    // L.marker(target1).addTo(map);
 </script>
