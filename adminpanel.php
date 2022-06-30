@@ -36,6 +36,55 @@
         }
     }
 
+    if(isset($_GET['aktie'])) {
+
+        $ID = $_GET['id'];
+        $sql = "SELECT * FROM `boekingen` WHERE `boekingen`.`ID` ='" . $ID . "'";
+                $result2 = mysqli_query($link, $sql);
+                while($row2 = mysqli_fetch_array($result2)){
+                        $tochtenID = $row2['FKtochtenID'];
+                        $FKklantenID = $row2['FKklantenID'];
+                }
+
+
+        if($_GET['aktie'] == "Update"){
+                $sql = "SELECT * FROM `tochten` WHERE `tochten`.`ID` ='" . $tochtenID . "'";
+                $result = mysqli_query($link, $sql);
+
+                $sql2 = "SELECT * FROM `klanten` WHERE `klanten`.`ID` ='" . $FKklantenID . "'";
+                $result2 = mysqli_query($link, $sql2);
+
+                echo "<table class='styled-table'>";
+                echo "<tr>
+                        <th>ID</th>
+                        <th>Omschrijving status</th>
+                        <th>Route</th>
+                        <th>Aantaldagen</th>
+                        <th>veranderen</th>
+                </tr>";
+
+                while($row = mysqli_fetch_array($result)){
+                        echo "<tr><form action='boekingBeheer.php' method='post'>
+                                <td><input type='hidden' value='" . $row['ID'] . "' name='id' ><input type='text' value=" . $row['ID'] . " name='id' disabled></td>
+                                <td><input type='text' value='" . $row['Omschrijving'] . "' name='Omschrijving' required></td>
+                                <td><input type='text' value='" . $row['Route'] . "' name='Route' required></td>
+                                <td><input type='text' value='" .  $row['Aantaldagen'] . "' name='Aantaldagen' required></td>
+                                <td><input type='submit' name='submit' value='versturen' /></form><td>";
+                }
+                echo "</table>";
+        }
+        if($_GET['aktie'] == "Delete"){
+
+                $sql = "DELETE FROM `tochten` WHERE `tochten`.`ID` ='" . $tochtenID . "'";
+                if (mysqli_query($link, $sql)) {
+                    }
+                $sql = "DELETE FROM `boekingen` WHERE `boekingen`.`ID` ='" . $ID . "'";
+                if (mysqli_query($link, $sql)) {
+                    }
+                
+        }
+}
+
     include("PAGE_FRAMEWORK.php"); //connection to database and some test functions
 
 ?>
@@ -129,9 +178,77 @@
     </table>
   </div>
 </div>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Boeking Beheer</h5>
+        <table id="boeking_table" class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Startdatum</th>
+                    <th>Omschrijving status</th>
+                    <th>Aantaldagen</th>
+                    <th>klant naam</th>
+                    <th>klant E-mail</th>
+                    <th>klant telefoonnummer</th>
+                    <th>Opties</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                
+                $query_Boeking = "SELECT * FROM boekingen";
+                $Result_Boeking = mysqli_query($link, $query_Boeking);
+                while($row_Boeking = mysqli_fetch_array($Result_Boeking)){
+                    echo "<tr><td>" . $row_Boeking['ID'] . "</td><td>" . $row_Boeking['Startdatum'] . "</td>";
+                    $sql_TochtINFO = "SELECT * FROM `tochten` WHERE `tochten`.`ID` ='" . $row_Boeking['FKtochtenID'] . "'";
+                    $Result_TochtINFO= mysqli_query($link, $sql_TochtINFO);
+                    while($row_tochtinfo = mysqli_fetch_array($Result_TochtINFO)){
+                            echo "<td>" . $row_tochtinfo['Omschrijving'] . "</td>
+                            <td>" .  $row_tochtinfo['Aantaldagen'] . "</td>";
+                    }
+                    $sql_KLANT = "SELECT * FROM `klanten` WHERE `klanten`.`ID` ='" . $row_Boeking['FKklantenID'] . "'";
+                    $result_KLANT = mysqli_query($link, $sql_KLANT);
+                    while($row_KLANT = mysqli_fetch_array($result_KLANT)){
+                            echo "<td>" . $row_KLANT['Naam'] . "</td>
+                            <td>" . $row_KLANT['Email'] . "</td>
+                            <td>" . $row_KLANT['Telefoon'] . "</td>";
+                    }
+                    echo "<td><a href='?aktie=Update&id=".$row_Boeking['ID']."'>
+                        <button type='button' class='btn btn-warning' data-bs-toggle='modal'>
+                            <i class='fas fa-pen'></i>
+                        </button>
+                    </a>
+                    <a href='?aktie=Delete&id=".$row_Boeking['ID']."'>
+                        <button type='button' class='btn btn-danger' data-bs-toggle='modal'>
+                            <i class='fas fa-trash-can'></i>
+                        </button>
+                    </a></td>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 <script>
     $('#user_table').DataTable({
+        paging: true,
+        "info": false,
+        "lengthChange":false,
+        "pageLength": 5,
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.11.5/i18n/nl-NL.json" // adds dutch language support
+        },
+        "columnDefs": [
+          {
+              "targets": [0],
+              "visible": false,
+              "searchable": false
+          }
+        ]
+    });
+    $('#boeking_table').DataTable({
         paging: true,
         "info": false,
         "lengthChange":false,
